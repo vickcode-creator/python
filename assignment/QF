@@ -1,0 +1,32 @@
+class FibHeapNode:
+    def __init__(self, key):
+        self.key = key
+        self.parent = None
+        self.child = None
+        self.left = self
+        self.right = self
+        self.degree = 0
+        self.mark = False
+
+class FibHeap:
+    def __init__(self):
+        self.min = None
+        self.n = 0
+
+    def insert(self, key):
+        node = FibHeapNode(key)
+        if self.min is None:
+            self.min = node
+        else:
+            self._add_to_root_list(node)
+            if node.key < self.min.key:
+                self.min = node
+        self.n += 1
+
+    def decrease_key(self, x, k):
+        if k > x.key:
+            raise ValueError("new key is greater than current key")
+        x.key = k
+        y = x.parent
+        if y is not None and x.key < y.key:
+            

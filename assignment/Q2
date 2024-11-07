@@ -1,0 +1,25 @@
+class PatientQueue:
+    def __init__(self):
+        self.queue = []
+
+    def enqueue(self, patient):
+        self.queue.append(patient)
+
+    def dequeue(self):
+        if self.queue:
+            return self.queue.pop(0)
+        else:
+            return None
+
+class EmergencyStack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, emergency_patient):
+        self.stack.append(emergency_patient)
+
+    def pop(self):
+        if self.stack:
+            return self.stack.pop()
+        else:
+            return None

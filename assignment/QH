@@ -1,0 +1,34 @@
+def binary_search(arr, x):
+    l, r = 0, len(arr) - 1
+    while l <= r:
+        mid = l + (r - l) // 2
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1
+
+import time
+
+def analyze_search_performance(arr, x):
+    best_case = arr[len(arr) // 2]  # Assuming x is in the middle
+    worst_case = arr[0] - 1  # Assuming x is not in the array
+    average_case = arr[len(arr) // 2 - 1]  # Near the middle
+
+    start = time.time()
+    binary_search(arr, best_case)
+    best_case_time = time.time() - start
+
+    start = time.time()
+    binary_search(arr, worst_case)
+    worst_case_time = time.time() - start
+
+    start = time.time()
+    binary_search(arr, average_case)
+    average_case_time = time.time() - start
+
+    return best_case_time, worst_case_time, average_case_time
+
+
